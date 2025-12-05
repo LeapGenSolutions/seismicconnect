@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+/* -------------------------- */
+/* SEISMIC ECG & HEART ANIMATIONS */
+/* -------------------------- */
+
+.seismic-heart {
+  transform-origin: center;
+  animation: seismic-heart-beat 1.1s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.seismic-ecg polyline {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: seismic-ecg-draw 3.2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.group:hover .seismic-heart,
+.group:hover .seismic-ecg polyline {
+  animation-play-state: running;
+}
+
+@keyframes seismic-heart-beat {
+  0%, 100% { transform: scale(1); }
+  20% { transform: scale(1.3); }
+  40% { transform: scale(0.95); }
+  60% { transform: scale(1.2); }
+  80% { transform: scale(1); }
+}
+
+@keyframes seismic-ecg-draw {
+  0% {
+    stroke-dashoffset: 200;
+    opacity: 0.4;
+  }
+  40% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 200;
+    opacity: 0.4;
+  }
+}
+/* Horizontal sliding for testimonials */
+.testimonial-track {
+  display: flex;
+  width: max-content;
+  animation: testimonial-marquee 40s linear infinite;
+}
+
+/* Move cards from right to left in a smooth loop */
+@keyframes testimonial-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

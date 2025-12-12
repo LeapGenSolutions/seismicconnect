@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/seismicconnect/",
+  base: "/",
   build: {
-    outDir: "docs",
+    outDir: "build",
   },
 });

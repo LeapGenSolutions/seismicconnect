@@ -242,22 +242,22 @@ export default function Navbar() {
           {/* Login + Try SEISMIC as boxed buttons */}
           <div className="flex items-center gap-2 ml-3">
             {/* Login – outlined pill */}
-            <Link
+            {/* <Link
               to="/login"
               className={
                 "inline-flex items-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-4 py-2 text-sm shadow"
               }
             >
               Login
-            </Link>
+            </Link> */}
 
             {/* Try SEISMIC – primary pill */}
-            <Link
+            {/* <Link
               to="/demo"
               className="inline-flex items-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-4 py-2 text-sm shadow"
             >
               Try SEISMIC
-            </Link>
+            </Link> */}
           </div>
         </nav>
 

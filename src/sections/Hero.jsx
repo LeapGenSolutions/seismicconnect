@@ -114,17 +114,8 @@ function RotatingTaglines() {
       }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
     >
-      <p className="text-xl text-gray-700 min-h-[1.75rem]">
+      <p className="text-xl text-gray-700 leading-snug min-h-[4.25rem] sm:min-h-[3.5rem] lg:min-h-[1.75rem]">
         {displayText}
-        <motion.span
-          className="inline-block w-1 ml-0.5 bg-gray-500 align-middle"
-          animate={{ opacity: [0, 1, 0] }}
-          transition={{
-            duration: 0.8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
       </p>
     </motion.div>
   );
@@ -189,6 +180,12 @@ export default function Hero() {
               >
                 Try SEISMIC
               </a> */}
+              <a
+                href="#contact"
+                className="rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-6 py-3 shadow"
+              >
+                Try SEISMIC
+              </a>
               <a
                 href="#features"
                 className="rounded-2xl border px-6 py-3 text-secondary-500 hover:bg-gray-50"

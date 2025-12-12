@@ -10,6 +10,10 @@ export default function Navbar() {
   const howCloseTimeoutRef = useRef(null);
   const location = useLocation();
 
+  // NEW: ref to measure sticky header height dynamically
+  const headerRef = useRef(null);
+  const mobileMenuRef = useRef(null);
+
   const navItems = [
     { href: "#features", label: "Features" },
     { href: "#pillars", label: "Pillars" },
@@ -22,15 +26,28 @@ export default function Navbar() {
       ],
     },
     { href: "#security", label: "Security" },
-    { href: "#testimonials", label: "Testimonials" },
+    //{ href: "#testimonials", label: "Testimonials" },
     { href: "#contact", label: "Contact Us" },
   ];
+
+  // NEW: dynamic offset scroll (no hardcoding)
+  const scrollToSection = (href) => {
+    const el = document.querySelector(href);
+    if (!el) return;
+
+    const headerH = headerRef.current?.getBoundingClientRect().height || 0;
+
+    // Desktop: no extra gap. Mobile: small breathing room.
+    const extraGap = window.innerWidth >= 768 ? 0 : 8;
+
+    const y = el.getBoundingClientRect().top + window.scrollY - headerH - extraGap;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
 
   const handleNavClick = (e, href) => {
     if (location.pathname === "/") {
       e.preventDefault();
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      scrollToSection(href);
       setActive(href);
     }
   };
@@ -59,7 +76,7 @@ export default function Navbar() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             if (
-              !visibleEntry ||
+              !visibleEntry || 
               entry.intersectionRatio > visibleEntry.intersectionRatio
             ) {
               visibleEntry = entry;
@@ -95,13 +112,53 @@ export default function Navbar() {
 
   const isItemActive = (item) => {
     if (active === item.href) return true;
-    if (item.children)
+    if (item.children) 
       return item.children.some((child) => child.href === active);
     return false;
   };
 
+  // NEW: mobile close first, then scroll after layout settles
+  const handleMobileNav = (e, href) => {
+    if (location.pathname !== "/") return;
+
+    e.preventDefault();
+    setOpen(false);
+
+    // wait for DOM/layout to settle after menu closes
+    setTimeout(() => {
+      scrollToSection(href);
+      setActive(href);
+    }, 0);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleClickOutside = (e) => {
+      // if click is outside the mobile menu AND outside the hamburger button, close
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(e.target) &&
+        !e.target.closest("[data-mobile-toggle='true']")
+      ) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-primary-50/60 via-white/50 to-primary-50/60 backdrop-blur-2xl border-b border-white/50 shadow">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 bg-gradient-to-r from-primary-50/60 via-white/50 to-primary-50/60 backdrop-blur-2xl border-b border-white/50 shadow"
+    >
       <Section className="flex items-center justify-between py-3">
         {/* LOGO */}
         <Link
@@ -111,16 +168,14 @@ export default function Navbar() {
               e.preventDefault();
               window.history.replaceState(null, "", "/");
               setActive("");
-              const heroEl = document.getElementById("top");
-              if (heroEl)
-                heroEl.scrollIntoView({ behavior: "smooth" });
-              else window.scrollTo({ top: 0, behavior: "smooth" });
+              // scroll to top reliably
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }
           }}
           className="flex items-center gap-2 cursor-pointer"
         >
           <img src={logo} alt="SEISMIC Logo" className="h-9 w-auto" />
-          <span className="font-semibold text-lg text-secondary-500 hidden sm:inline">
+          <span className="font-semibold text-lg text-secondary-500">
             SEISMIC
           </span>
         </Link>
@@ -136,13 +191,13 @@ export default function Navbar() {
                   key={item.href}
                   className="relative"
                   onMouseEnter={() => {
-                    if (howCloseTimeoutRef.current)
+                    if (howCloseTimeoutRef.current) 
                       clearTimeout(howCloseTimeoutRef.current);
                     setHowOpen(true);
                   }}
                   onMouseLeave={() => {
                     howCloseTimeoutRef.current = setTimeout(
-                      () => setHowOpen(false),
+                      () => setHowOpen(false), 
                       250
                     );
                   }}
@@ -152,15 +207,15 @@ export default function Navbar() {
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={
                       "inline-flex items-center gap-1 text-gray-700 hover:text-primary-600 transition border-b-2 pb-1 " +
-                      (itemIsActive
-                        ? "border-primary-600 text-primary-600"
+                      (itemIsActive 
+                        ? "border-primary-600 text-primary-600" 
                         : "border-transparent")
                     }
                   >
                     {item.label}
                     <svg
                       className={
-                        "w-3.5 h-3.5 " +
+                        "w-3.5 h-3.5 " + 
                         (itemIsActive ? "text-primary-600" : "text-gray-500")
                       }
                       viewBox="0 0 20 20"
@@ -184,9 +239,9 @@ export default function Navbar() {
                           <Link
                             key={child.href}
                             to={
-                              location.pathname === "/"
-                                ? child.href
-                                : `/${child.href}`
+                              location.pathname === "/" 
+                              ? child.href 
+                              : `/${child.href}`
                             }
                             onClick={(e) => {
                               handleNavClick(e, child.href);
@@ -216,8 +271,8 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={
                   "text-gray-700 hover:text-primary-600 transition border-b-2 pb-1 " +
-                  (itemIsActive
-                    ? "border-primary-600 text-primary-600"
+                  (itemIsActive 
+                    ? "border-primary-600 text-primary-600" 
                     : "border-transparent")
                 }
               >
@@ -262,7 +317,11 @@ export default function Navbar() {
         </nav>
 
         {/* MOBILE TOGGLE */}
-        <button className="md:hidden p-2" onClick={() => setOpen(!open)}>
+        <button
+          data-mobile-toggle="true"
+          className="md:hidden p-2"
+          onClick={() => setOpen(!open)}
+        >
           <span className="block w-6 h-0.5 bg-secondary-500 mb-1"></span>
           <span className="block w-6 h-0.5 bg-secondary-500 mb-1"></span>
           <span className="block w-6 h-0.5 bg-secondary-500"></span>
@@ -271,7 +330,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden border-t bg-white">
+        <div ref={mobileMenuRef} className="md:hidden border-t bg-white">
           <Section className="py-3 flex flex-col gap-3">
             {navItems.map((item) => {
               if (item.children) {
@@ -281,10 +340,7 @@ export default function Navbar() {
                       to={
                         location.pathname === "/" ? item.href : `/${item.href}`
                       }
-                      onClick={(e) => {
-                        handleNavClick(e, item.href);
-                        setOpen(false);
-                      }}
+                      onClick={(e) => handleMobileNav(e, item.href)}
                       className="text-gray-700 font-medium"
                     >
                       {item.label}
@@ -294,14 +350,11 @@ export default function Navbar() {
                       <Link
                         key={child.href}
                         to={
-                          location.pathname === "/"
-                            ? child.href
-                            : `/${child.href}`
+                          location.pathname === "/" 
+                          ? child.href 
+                          : `/${child.href}`
                         }
-                        onClick={(e) => {
-                          handleNavClick(e, child.href);
-                          setOpen(false);
-                        }}
+                        onClick={(e) => handleMobileNav(e, child.href)}
                         className="pl-4 text-sm text-gray-600"
                       >
                         {child.label}
@@ -315,10 +368,7 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   to={location.pathname === "/" ? item.href : `/${item.href}`}
-                  onClick={(e) => {
-                    handleNavClick(e, item.href);
-                    setOpen(false);
-                  }}
+                  onClick={(e) => handleMobileNav(e, item.href)}
                   className="text-gray-700"
                 >
                   {item.label}
@@ -336,22 +386,22 @@ export default function Navbar() {
             </Link>
 
             {/* Login – boxed */}
-            <Link
+            {/* <Link
               to="/login"
-              onClick={() => setOpen(false)}
+              onClick={handleMobileRouteNav}
               className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-4 py-2 shadow"
             >
               Login
-            </Link>
+            </Link>*/}
 
             {/* Try SEISMIC – primary boxed */}
-            <Link
+            {/*<Link
               to="/demo"
-              onClick={() => setOpen(false)}
+              onClick={handleMobileRouteNav}
               className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-4 py-2 shadow"
             >
               Try SEISMIC
-            </Link>
+            </Link>*/}
           </Section>
         </div>
       )}

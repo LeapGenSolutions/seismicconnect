@@ -74,7 +74,7 @@ function Step({ n, icon: Icon, title, desc }) {
 export default function HowItWorks() {
   return (
     <div id="how" className="bg-white">
-      <Section className="py-16">
+      <Section className="py-10 sm:py-12 lg:py-14">
         <div className="max-w-3xl mx-auto text-center mb-10">
           <h2 className="text-3xl font-bold text-secondary-500">
             How SEISMIC Works
@@ -132,12 +132,12 @@ export default function HowItWorks() {
 
         {/* Optional CTA row */}
         <div className="mt-10 flex items-center justify-center gap-3">
-          <a
+          {/*<a
             href="/demo"
             className="rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-6 py-3 shadow"
           >
             See a Live Demo
-          </a>
+          </a>*/}
           <a
             href="#contact"
             className="rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-6 py-3 shadow"

@@ -59,7 +59,7 @@ function Bullet({ icon: Icon, title, desc }) {
 export default function Integrations() {
   return (
     <div id="integrations" className="bg-white">
-      <Section className="py-16">
+      <Section className="py-10 sm:py-12 lg:py-14">
         {/* Main heading + intro */}
         <div className="max-w-3xl mx-auto text-center mb-10">
           <h2 className="text-3xl font-bold text-secondary-500">

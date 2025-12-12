@@ -183,12 +183,12 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <a
+              {/* <a
                 href="/demo"
                 className="rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-6 py-3 shadow"
               >
                 Try SEISMIC
-              </a>
+              </a> */}
               <a
                 href="#features"
                 className="rounded-2xl border px-6 py-3 text-secondary-500 hover:bg-gray-50"

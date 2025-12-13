@@ -1,5 +1,5 @@
 import Section from "../components/Section";
-import { Phone } from "lucide-react";
+import { Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function Contact() {
@@ -34,7 +34,7 @@ export default function Contact() {
   }
 
   return (
-    <Section id="contact" className="py-16">
+    <Section id="contact" className="py-10 sm:py-12 lg:py-14">
       {/* Header for the whole section */}
       <div className="max-w-3xl mx-auto text-center mb-10">
         <h2 className="text-3xl font-bold text-secondary-500">Contact Us</h2>
@@ -114,8 +114,8 @@ export default function Contact() {
               type="submit"
               className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-6 py-3 shadow"
             >
-              <Phone className="w-5 h-5" />
-              Submit
+              <Send className="w-5 h-5" />
+              Submit Request
             </button>
           </form>
         </div>
@@ -140,7 +140,7 @@ export default function Contact() {
             up and access the Standalone SEISMIC page.
           </p>
 
-          <button
+          {/*<button
             type="button"
             onClick={handleSignupClick}
             className="mt-5 inline-flex items-center justify-center rounded-2xl border border-primary-600 px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-600 hover:text-white transition"
@@ -151,6 +151,9 @@ export default function Contact() {
           <p className="mt-2 text-xs text-gray-500">
             This button is a placeholder for now. Once the Standalone SEISMIC
             page is live, it will take you directly to the sign-up flow.
+          </p>*/}
+          <p className="mt-2 text-xs text-gray-500">
+            Standalone sign-up is coming soon. In the meantime, please submit a request via the Contact section, and we’ll reach out with free trial details.
           </p>
         </div>
       </div>

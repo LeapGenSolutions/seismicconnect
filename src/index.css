@@ -55,6 +55,11 @@ html { scroll-behavior: smooth; }
   animation: testimonial-marquee 40s linear infinite;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 /* Move cards from right to left in a smooth loop */
 @keyframes testimonial-marquee {
   0% {

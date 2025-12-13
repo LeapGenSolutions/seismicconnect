@@ -7,6 +7,9 @@ export default function About() {
   useEffect(() => {
     document.title = "SEISMIC — About Us";
   }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">

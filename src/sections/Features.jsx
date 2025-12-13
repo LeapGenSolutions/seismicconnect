@@ -75,7 +75,7 @@ function FeatureCard({ icon: Icon, title, children }) {
 
 export default function Features() {
   return (
-    <Section id="features" className="py-16">
+    <Section id="features" className="py-10 sm:py-12 lg:py-14">
       <div className="max-w-3xl mx-auto text-center mb-10">
         <h2 className="text-3xl font-bold text-secondary-500">
           What SEISMIC Delivers

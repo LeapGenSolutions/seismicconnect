@@ -101,16 +101,16 @@ export default function Footer() {
                     Security
                   </Link>
                 </li>
-                <li>
+                {/*<li>
                   <Link to="/demo" className="hover:text-primary-600">
                     Request Demo
                   </Link>
-                </li>
+                </li>*/}
               </ul>
             </div>
 
             {/* Legal & Connect */}
-            <div className="space-y-2">
+            {/*<div className="space-y-2">
               <h3 className="text-xs font-semibold uppercase tracking-wide text-secondary-500">
                 Legal &amp; Connect
               </h3>
@@ -151,7 +151,7 @@ export default function Footer() {
                   <span>Email</span>
                 </a>
               </div>
-            </div>
+            </div>*/}
           </div>
         </div>
 

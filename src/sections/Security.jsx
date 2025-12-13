@@ -66,7 +66,7 @@ function Bullet({ icon: Icon, title, desc }) {
 export default function Security() {
   return (
     <div id="security" className="bg-secondary-500/5">
-      <Section className="py-16">
+      <Section className="py-10 sm:py-12 lg:py-14">
         <div className="max-w-3xl mx-auto text-center mb-10">
           <h2 className="text-3xl font-bold text-secondary-500">
             Security &amp; Compliance

@@ -51,7 +51,7 @@ export default function Contact() {
         <div className="flex-1">
           <form
             onSubmit={handleSubmit}
-            action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+            action="https://formspree.io/f/xnnelwql"
             method="POST"
             className="grid gap-4"
           >

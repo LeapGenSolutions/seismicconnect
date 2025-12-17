@@ -9,6 +9,8 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import "./index.css";
 import ThankYouPage from "./pages/ThankYouPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
@@ -24,6 +26,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 				<Route path="/signup" element={<SignupPage />} />
 				<Route path="/demo" element={<DemoPage />} />
 				<Route path="/thank-you" element={<ThankYouPage />} />
+				{/* Legal & Connect */}
+				<Route path="/privacy-policy" element={<PrivacyPolicy />} />	
+				<Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 			</Routes>
 		</Router>
 	</React.StrictMode>

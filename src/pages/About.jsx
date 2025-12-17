@@ -77,34 +77,23 @@ export default function About() {
             <div className="space-y-4 mb-8">
               <div>
                 <h3 className="font-semibold text-secondary-500">
-                  Chief Executive Officer – Mr. Kumar Konduru
+                  Founder – Dr. Vandana Palagiri, MD
                 </h3>
                 <p className="text-gray-700">
-                  Kumar leads SEISMIC’s strategic direction, partnerships, and
-                  growth with a strong focus on building scalable, impactful
-                  healthcare technology solutions.
+                  Dr. Palagiri founded SEISMIC with a clinician-first vision to reduce
+                  documentation burden and restore meaningful doctor–patient interactions
+                  through intelligent, compliant healthcare technology.
                 </p>
               </div>
 
               <div>
                 <h3 className="font-semibold text-secondary-500">
-                  Chief Technology Officer – Mr. Madhu Rao
+                  Co-Founder – Dr. Suneel Movva
                 </h3>
                 <p className="text-gray-700">
-                  Madhu oversees SEISMIC’s technology roadmap, engineering
-                  excellence, and cloud architecture, ensuring the platform is
-                  secure, reliable, and future-ready.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-secondary-500">
-                  Chief Product &amp; Medical Officer – Dr. Suneel Movva
-                </h3>
-                <p className="text-gray-700">
-                  Dr. Movva brings together hands-on clinical experience and
-                  product thinking to ensure SEISMIC truly supports clinicians
-                  at the point of care, with medically sound and usable AI.
+                  Dr. Movva brings together deep clinical expertise and product leadership
+                  to ensure SEISMIC delivers medically sound, practical, and impactful AI
+                  solutions that support providers at the point of care.
                 </p>
               </div>
             </div>

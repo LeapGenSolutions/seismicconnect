@@ -110,30 +110,27 @@ export default function Footer() {
             </div>
 
             {/* Legal & Connect */}
-            {/*<div className="space-y-2">
+            <div className="space-y-2">
               <h3 className="text-xs font-semibold uppercase tracking-wide text-secondary-500">
                 Legal &amp; Connect
               </h3>
               <ul className="space-y-1">
                 <li>
-                  <button
-                    type="button"
-                    className="hover:text-primary-600 cursor-default"
-                  >
-                    Privacy Policy (coming soon)
-                  </button>
+                  <Link to="/privacy-policy" className="hover:text-primary-600">
+                    Privacy Policy
+                  </Link>
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    className="hover:text-primary-600 cursor-default"
+                  <Link
+                    to="/terms-and-conditions"
+                    className="hover:text-primary-600"
                   >
-                    Terms of Use (coming soon)
-                  </button>
+                    Terms of Use
+                  </Link>
                 </li>
               </ul>
 
-              <div className="flex items-center gap-3 pt-1">
+              {/*<div className="flex items-center gap-3 pt-1">
                 <a
                   href="https://www.linkedin.com"
                   target="_blank"
@@ -150,8 +147,8 @@ export default function Footer() {
                   <Mail className="w-4 h-4" />
                   <span>Email</span>
                 </a>
-              </div>
-            </div>*/}
+              </div>*/}
+            </div>
           </div>
         </div>
 

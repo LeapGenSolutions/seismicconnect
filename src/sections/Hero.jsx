@@ -7,6 +7,9 @@ import logo from "../assets/seismic-logo.png";
 import amaLogo from "../assets/trust/ama.png";
 import athenaLogo from "../assets/trust/athenamp.webp";
 import hipaaLogo from "../assets/trust/hipaa.webp";
+import isoLogo from "../assets/trust/iso.jpg";
+import gdprLogo from "../assets/trust/gdpr.png";
+import upToDateLogo from "../assets/trust/uptodatelogo.png";
 
 
 function ECGWave({ delay = 0 }) {
@@ -133,6 +136,9 @@ function TrustStrip() {
       { title: "Listed on athenahealth Marketplace", logoSrc: athenaLogo },
       { title: "Integrated with AMA", logoSrc: amaLogo },
       { title: "HIPAA Compliant", logoSrc: hipaaLogo },
+      { title: "Integrated with UpToDate", logoSrc: upToDateLogo },
+      { title: "GDPR Compliant", logoSrc: gdprLogo },
+      { title: "ISO Certified", logoSrc: isoLogo },
     ],
     []
   );

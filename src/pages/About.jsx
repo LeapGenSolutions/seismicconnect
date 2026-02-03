@@ -77,17 +77,6 @@ export default function About() {
             <div className="space-y-4 mb-8">
               <div>
                 <h3 className="font-semibold text-secondary-500">
-                  Founder – Dr. Suneel Movva
-                </h3>
-                <p className="text-gray-700">
-                  Dr. Movva brings together deep clinical expertise and product leadership
-                  to ensure SEISMIC delivers medically sound, practical, and impactful AI
-                  solutions that support providers at the point of care.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold text-secondary-500">
                   Chief Medical Officer – Dr. Vandana Palagiri, MD
                 </h3>
                 <p className="text-gray-700">

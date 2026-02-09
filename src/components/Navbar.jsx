@@ -76,7 +76,7 @@ export default function Navbar() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             if (
-              !visibleEntry || 
+              !visibleEntry ||
               entry.intersectionRatio > visibleEntry.intersectionRatio
             ) {
               visibleEntry = entry;
@@ -112,7 +112,7 @@ export default function Navbar() {
 
   const isItemActive = (item) => {
     if (active === item.href) return true;
-    if (item.children) 
+    if (item.children)
       return item.children.some((child) => child.href === active);
     return false;
   };
@@ -191,13 +191,13 @@ export default function Navbar() {
                   key={item.href}
                   className="relative"
                   onMouseEnter={() => {
-                    if (howCloseTimeoutRef.current) 
+                    if (howCloseTimeoutRef.current)
                       clearTimeout(howCloseTimeoutRef.current);
                     setHowOpen(true);
                   }}
                   onMouseLeave={() => {
                     howCloseTimeoutRef.current = setTimeout(
-                      () => setHowOpen(false), 
+                      () => setHowOpen(false),
                       250
                     );
                   }}
@@ -207,15 +207,15 @@ export default function Navbar() {
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={
                       "inline-flex items-center gap-1 text-gray-700 hover:text-primary-600 transition border-b-2 pb-1 " +
-                      (itemIsActive 
-                        ? "border-primary-600 text-primary-600" 
+                      (itemIsActive
+                        ? "border-primary-600 text-primary-600"
                         : "border-transparent")
                     }
                   >
                     {item.label}
                     <svg
                       className={
-                        "w-3.5 h-3.5 " + 
+                        "w-3.5 h-3.5 " +
                         (itemIsActive ? "text-primary-600" : "text-gray-500")
                       }
                       viewBox="0 0 20 20"
@@ -239,9 +239,9 @@ export default function Navbar() {
                           <Link
                             key={child.href}
                             to={
-                              location.pathname === "/" 
-                              ? child.href 
-                              : `/${child.href}`
+                              location.pathname === "/"
+                                ? child.href
+                                : `/${child.href}`
                             }
                             onClick={(e) => {
                               handleNavClick(e, child.href);
@@ -271,8 +271,8 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={
                   "text-gray-700 hover:text-primary-600 transition border-b-2 pb-1 " +
-                  (itemIsActive 
-                    ? "border-primary-600 text-primary-600" 
+                  (itemIsActive
+                    ? "border-primary-600 text-primary-600"
                     : "border-transparent")
                 }
               >
@@ -297,14 +297,15 @@ export default function Navbar() {
           {/* Login + Try SEISMIC as boxed buttons */}
           <div className="flex items-center gap-2 ml-3">
             {/* Login – outlined pill */}
-            {/* <Link
-              to="/login"
+            {/* Login – outlined pill */}
+            <a
+              href="https://registration.seismicconnect.com/"
               className={
                 "inline-flex items-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-4 py-2 text-sm shadow"
               }
             >
               Login
-            </Link> */}
+            </a>
 
             {/* Try SEISMIC – primary pill */}
             {/* <Link
@@ -350,9 +351,9 @@ export default function Navbar() {
                       <Link
                         key={child.href}
                         to={
-                          location.pathname === "/" 
-                          ? child.href 
-                          : `/${child.href}`
+                          location.pathname === "/"
+                            ? child.href
+                            : `/${child.href}`
                         }
                         onClick={(e) => handleMobileNav(e, child.href)}
                         className="pl-4 text-sm text-gray-600"
@@ -386,13 +387,14 @@ export default function Navbar() {
             </Link>
 
             {/* Login – boxed */}
-            {/* <Link
-              to="/login"
-              onClick={handleMobileRouteNav}
+            {/* Login – boxed */}
+            <a
+              href="https://registration.seismicconnect.com/"
+              onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-4 py-2 shadow"
             >
               Login
-            </Link>*/}
+            </a>
 
             {/* Try SEISMIC – primary boxed */}
             {/*<Link

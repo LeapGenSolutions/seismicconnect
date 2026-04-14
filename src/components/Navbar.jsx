@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Section from "./Section";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/seismic-logo.png";
+import { CIAM_LOGIN_URL } from "../config";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -296,15 +297,12 @@ export default function Navbar() {
 
           {/* Login + Try SEISMIC as boxed buttons */}
           <div className="flex items-center gap-2 ml-3">
-            {/* Login – outlined pill */}
-            {/* Login – outlined pill */}
+            {/* Sign In / Sign Up – outlined pill */}
             <a
-              href="https://leapgenaiexternal.ciamlogin.com/526922da-32fc-472e-a268-3875f1d50517/oauth2/v2.0/authorize?client_id=e8f47d33-02b8-4467-b0d8-8f705b07a463&response_type=id_token&redirect_uri=https%3A%2F%2Fregistration.seismicconnect.com%2Fstandalone%2Fregistration&scope=openid+profile+email&nonce=izj26i&prompt=login"
-              className={
-                "inline-flex items-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-4 py-2 text-sm shadow"
-              }
+              href={CIAM_LOGIN_URL}
+              className="inline-flex items-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-4 py-2 text-sm shadow"
             >
-              Sign In
+              Sign In / Sign Up
             </a>
 
             {/* Try SEISMIC – primary pill */}
@@ -386,14 +384,13 @@ export default function Navbar() {
               About Us
             </Link>
 
-            {/* Login – boxed */}
-            {/* Login – boxed */}
+            {/* Sign In / Sign Up – boxed */}
             <a
-              href="https://leapgenaiexternal.ciamlogin.com/526922da-32fc-472e-a268-3875f1d50517/oauth2/v2.0/authorize?client_id=e8f47d33-02b8-4467-b0d8-8f705b07a463&response_type=id_token&redirect_uri=https%3A%2F%2Fregistration.seismicconnect.com%2Fstandalone%2Fregistration&scope=openid+profile+email&nonce=izj26i&prompt=login"
+              href={CIAM_LOGIN_URL}
               onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary-600 hover:bg-primary-600/90 text-white px-4 py-2 shadow"
             >
-              Sign In
+              Sign In / Sign Up
             </a>
 
             {/* Try SEISMIC – primary boxed */}
